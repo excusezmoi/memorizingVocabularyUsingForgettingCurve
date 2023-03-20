@@ -186,7 +186,7 @@ def main():
         askString = "Do you want to continue?\nEnter 'y' for continuing or enter 'n' to end.\n"
         ask = lambda x: True if x == "y" else False if x == "n" else ask(input(askString).lower())
         continueLoop = ask(input(askString).lower())
-    input("Good work, bye!\n")
+    input("Good work, bye!!\n")
 
 if __name__ == '__main__':
     main()
