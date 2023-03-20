@@ -84,10 +84,8 @@ def getDefinitions(word):
         page = etree.HTML(html)
     except requests.exceptions.RequestException: #if request failed, return the following
         return [("No results found due to connection or request error!")*2]
-    
     definitions = [] #if the request is successful, we need a list to contain the definitions and sentences
     ordinal = 1 #looping for all the definition and setences elements on the webpage
-    
     while True:
         try:
             # english definition
