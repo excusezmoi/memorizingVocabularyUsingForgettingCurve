@@ -16,7 +16,7 @@ def configInfo():
     config.read(os.path.join(os.path.dirname(__file__), 'config.ini')) #reads the configuration file
     return (config.get('FILES', 'the_file'),int(config.get('APPEARANCES', 'appearances'))) #return the two vales
 
-def theDate(datePrompt, sep = ""):
+def theDate(datePrompt, sep = " "):
     '''Used for acquiring a date from the user. Different prompt could be presented by modifying the argument
     "datePrompt", which must be a string. If there is no input, return the date of today. The default input format
       is "yyyy mm dd". Different separator may be specified by the argument sep.'''
