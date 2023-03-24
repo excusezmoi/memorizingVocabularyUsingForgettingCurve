@@ -24,7 +24,7 @@ def theDate(datePrompt, sep = " "):
         return (lambda x: date(*map(int, x.split(sep))) if x != "" else date.today())(input(datePrompt))
     except (TypeError, ValueError): #if format not correct, the user will be asked again
         print("The date format is not correct!\n")
-        return theDate(datePrompt,sep)
+        return theDate(datePrompt, sep)
 
 def inputWords(inputWordsPrompt, sep = ","):
     '''Used to acquire the words that the user wants to store, and return a list with the words. The prompt and
@@ -35,37 +35,37 @@ def inputDateAndWords(inputDate, inputWordList):
     '''Return the full list of a date and the words.'''
     return [inputDate] + inputWordList
 
-def writeWords(dateWordsList,filePath):
+def writeWords(dateWordsList, filePath):
     '''Writes the list with date and words to the csv file.'''
-    with open(filePath,'a', newline = '') as file:
+    with open(filePath, 'a', newline = '') as file:
         csv.writer(file).writerow(dateWordsList)
 
 def file2Dict(filePath):
     '''Read the csv file into a dictionary with keys being the dates and values being the vocabulary.
     The file path should be given, and if the row is empty, it will be ignored.'''
     fileDict = {}
-    [fileDict.setdefault(row[0],[]).extend(row[1:]) for row in csv.reader(open(filePath,'r')) if row]
+    [fileDict.setdefault(row[0], []).extend(row[1:]) for row in csv.reader(open(filePath, 'r')) if row]
     return fileDict
 
 def lazyCaterer(appearances):
     '''Creating the lazy caterer sequence dictionary. The key is the show up count of the list, 
     and the value is the number of days of each appearances. The appearances is the number of 
     times a word would show up including the day that the word is being stored.'''
-    forget = {-1:0,0:1}
-    for i in range(1,appearances): 
+    forget = {-1:0, 0:1}
+    for i in range(1, appearances): 
         forget[i] = i + forget[i-1]
     return forget
 
-def datesToReview(appearances,reviewDate,filePath):
+def datesToReview(appearances, reviewDate, filePath):
     '''Finds the dates that should be reviewed based on the date entered and the lazy caterer sequence, 
     and return them with a list.'''
     lazy = lazyCaterer(appearances)
     reviewDates = list(filter(lambda x: (reviewDate - date(*map(int, x.split("-")))).days in lazy.values(), list(file2Dict(filePath).keys())))
     return reviewDates
 
-def listOfToday(appearances,reviewDate,filePath):
+def listOfToday(appearances, reviewDate, filePath):
     '''Return the complete list of words to review! The sequence of the words were shuffled.'''
-    todayList = [word for Date in datesToReview(appearances,reviewDate,filePath) for word in file2Dict(filePath)[Date]]
+    todayList = [word for Date in datesToReview(appearances, reviewDate, filePath) for word in file2Dict(filePath)[Date]]
     random.shuffle(todayList)
     return todayList
 
@@ -79,7 +79,7 @@ def getDefinitions(word):
     try: #using the fake user agent to request the website of Cambridge Dictionary
         url = f'https://dictionary.cambridge.org/dictionary/english-chinese-traditional/{word}'
         headers = {'user-agent': fakeUserAgent()}
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers = headers)
         html = response.text
         page = etree.HTML(html)
     except requests.exceptions.RequestException: #if request failed, return the following
@@ -110,7 +110,7 @@ def getDefinitions(word):
             break #if there are no more definitions to be scooped
     return definitions
 
-def wordFirst(word,dic,_):
+def wordFirst(word, dic, _):
     '''If the user wants to view the word first, each time a definition pop up, they can choose whether to 
     view the definition by entering "s".'''
     print(word)
@@ -120,14 +120,14 @@ def wordFirst(word,dic,_):
         if input(">").lower() == "s": 
             print(f"sent{number+1}: {defSentPairs[1]}")
 
-def defFirst(word,dic,numOfDef):
+def defFirst(word, dic, numOfDef):
     '''If the user wants to view the definition first, when the word is presented, they can choose view the specific 
     definition by entering "s1", "s2", or view all the example sentences by entering "s".'''
-    for number,(definition,_) in enumerate(dic): 
+    for number, (definition,_) in enumerate(dic): 
         print(f"def{number+1}: {definition}")
     input()
     print(word)
-    def showSent(dic,numOfDef):
+    def showSent(dic, numOfDef):
         '''The function managed the part of showing sentences.'''
         while True:
             sentCmd = input(">").lower()
@@ -144,9 +144,9 @@ def defFirst(word,dic,numOfDef):
                     print(f"Invalid input: there are only {numOfDef} sentences.")
             else: #the loop will end if entered nonsense
                 return
-    showSent(dic,numOfDef)
+    showSent(dic, numOfDef)
 
-def displayWordList(appearances,reviewDate,filePath):
+def displayWordList(appearances, reviewDate, filePath):
     '''This function will be called if the user wants to review the words. There are three choices: 
     viewing the word first, viewing the definition first, or in random order. '''
     #get the response of the user
@@ -161,16 +161,16 @@ def displayWordList(appearances,reviewDate,filePath):
     else:
         input(f"When the word presents prior to definitions:\n{wordFirstPrompt}\nWhen the definitions comes before the word:\n{defFirstPrompt}")
     for word in listOfToday(appearances,reviewDate,filePath): #displaying the words with separation lines between each word
-        input("{}".format('-'*50))
+        input("-" * 50)
         dic = getDefinitions(word)
         numOfDef = len(dic)
         if order == "w": 
-            wordFirst(word,dic,numOfDef)
+            wordFirst(word, dic, numOfDef)
         elif order == "d": 
-            defFirst(word,dic,numOfDef)
+            defFirst(word, dic, numOfDef)
         else: 
-            random.choice((wordFirst,defFirst))(word,dic,numOfDef)
-    input("{}".format('-'*50))
+            random.choice((wordFirst, defFirst))(word, dic, numOfDef)
+    input("-" * 50)
 
 def main():
     '''The function that put all the things together and underlying the two main functionalities: 
