@@ -6,7 +6,7 @@ Memorizing words could be exasperating for those who wanted to prepare for tests
 forgetting curve, we can memorize things better by manipulating the time interval of active recall: the more recently memorized words
 should be reviewed more often. This program allows you to save words on a specific date and can presents the ones you need to review
 on any date. Combining with web crawling, the definition and the word could be presented with both orders (The Cambridge Dictionary
-web crawling part is modified from [mimiliaogo's cambridge-dictionary-crawler repo](https://github.com/mimiliaogo/cambridge-dictionary-crawler.git). Example sentences 
+web crawling part is modified from [mimiliaogo's cambridge-dictionary-crawler repo](https://github.com/mimiliaogo/cambridge-dictionary-crawler.git)). Example sentences 
 could also be presented.
 
 ## Requirement
