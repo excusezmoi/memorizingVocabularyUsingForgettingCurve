@@ -30,7 +30,7 @@ Python 3.x?
 
 # Setup
 
-1. Please make sure the config.ini and main.py is in the same directory.
+1. Please make sure the config.ini and main.py are in the same directory.
 2. Create a csv file, copy its absolute file path, and modify the file path in config.ini. For example: the_file = W:/Me/Vocabulary/vocab.csv
-3. You can also change the number of appearances of a word by changing the value of "appearances" in config.ini. Default setting allows you to see the words 6 times (days) including the day you add them.
+3. You can also change the number of appearances (in the course if the following days) of a word by changing the value of "appearances" in config.ini. Default setting allows you to see the words 6 times (days) including the day you add them.
 4. All set! Run the file and follow the instructions.
