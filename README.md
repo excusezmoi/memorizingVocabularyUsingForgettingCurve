@@ -19,10 +19,10 @@ Python 3
 
 ## Requirements
 
-﻿configparser==5.3.0
-requests==2.28.1
-lxml==4.9.2
-fake-useragent==1.1.1
+﻿`configparser==5.3.0`
+`requests==2.28.1`
+`lxml==4.9.2`
+`fake-useragent==1.1.1`
 
 ## Setup
 
