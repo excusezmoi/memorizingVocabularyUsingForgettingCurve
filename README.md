@@ -33,4 +33,45 @@ fake-useragent==1.1.1
 
 ## Step by Step Guide
 
+Before anything, please make sure you have installed all the required packages, and check for internet connection.
+
+### Add words
+
+1. Run the main.py file.
+
+![image](/images/runMain.png)
+
+2. Enter "a" for adding words.
+
+![image](/images/enterAtoAdd.png)
+
+3. Enter the date to add words. Pay attention to the format.
+
+![image](/images/enterDateA.png)
+
+4. Enter the words you want to add. The words should be separated by commas.
+
+![image](/images/enterWords.png)
+
+5. Done! The words are added to the CSV file.
+
+6. (Optional) Add more words in the next day.
+
+![image](/images/enterWords2.png)
+
+### Review words
+
+1. Run the main.py file. Or enter "r" if you are already in the main menu. Enter the date to review words.
+
+![image](/images/enterRdateToReview.png)
+
+3. Choose the reviewing option you want. You can choose the order of definition and words.
+
+![image](/images/reviewOptions.png)
+
+3. Start reviewing! Example sentences can be shown if you choose to. Note that the words in 6/13 and 6/14 are shown in the review date 6/15. Amazing isn't it?
+
+![image](/images/reviewingWords.png)
+
+
 
