@@ -65,7 +65,7 @@ Before anything, please make sure you have installed all the required packages, 
 
 ![image](/images/enterRdateToReview.png)
 
-3. Choose the reviewing option you want. You can choose the order of definition and words.
+3. Choose the reviewing option you want. You can choose the order of definitions and words.
 
 ![image](/images/reviewOptions.png)
 
