@@ -71,4 +71,4 @@ Before anything, please make sure you have installed all the required packages, 
 
 3. Start reviewing! Example sentences can be shown if you choose to. Note that the words in 6/13 and 6/14 are shown in the review date 6/15. Amazing isn't it?
 
-![image](/images/reviewingWords.png)
+![image](/images/reviewWords.png)
